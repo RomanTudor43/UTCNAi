@@ -3,6 +3,10 @@
 This is a **Flutter Web** application designed to run on **Ubuntu (Linux)** and **ChromeOS**.  
 It is also compatible with **Windows**, **Linux**, **ChromeOS**, and **macOS**.
 
+By clicking on the "Institutul de Cercetare pentru Inteligenta Artificiala", you will be redirected to the HomePage.
+By clicking on the items from the navbar, you will be redirected to specific pages, eg: About the Institute page, News page, etc.
+In News page, we developed demo pages for the news in the boxes. The news tabs are clickable, but they are only demo examples.
+
 ---
 
 # **Instructions on How to Run the Application on Ubuntu**
