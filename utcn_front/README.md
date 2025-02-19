@@ -29,6 +29,7 @@ tar xf flutter_linux_3.16.0-stable.tar.xz
 export PATH="$PWD/flutter/bin:$PATH"
 flutter doctor
 
+Running flutter doctor should retrieve a response similar to this:
 
 Running flutter doctor...
 Doctor summary (to see all details, run flutter doctor -v):
