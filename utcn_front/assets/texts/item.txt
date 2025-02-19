@@ -1,0 +1,4 @@
+We are looking for people interested in joining the Networked Embedded
+Systems Lab to pursue a PhD. The Networked Embedded Systems Lab conducts research at the intersection of embedded systems and
+wireless networking, with the overarching goal of making cyber-physical systems 
+and the Internet of Things (IoT) more dependable and sustainable. General areas of research include:

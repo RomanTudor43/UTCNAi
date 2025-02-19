@@ -15,14 +15,12 @@ class AboutPage extends StatelessWidget {
               height: 400, // Smaller height so you see more of the image
               child: Stack(
                 children: [
-                  // Hero Image
                   Positioned.fill(
                     child: Image.asset(
                       'assets/images/about_image.jpeg',
                       fit: BoxFit.cover,
                     ),
                   ),
-                  // Semi‐transparent overlay
                   Positioned.fill(child: Container(color: Colors.black54)),
                   // Title near the bottom
                   Positioned(
@@ -42,7 +40,6 @@ class AboutPage extends StatelessWidget {
                 ],
               ),
             ),
-
             // 2) MAIN CONTENT (Two-Column Layout)
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -64,28 +61,37 @@ class AboutPage extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   const SizedBox(width: 16),
-
                   // RIGHT COLUMN: Main Text / Body
                   Expanded(
                     flex: 3,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'About PCIA\n\n'
-                          'The Platforma de Cercetare în Inteligență Artificială (PCIA) at UTC-N is a premier research center dedicated '
-                          'to advancing artificial intelligence. It focuses on developing AI-driven models, prototypes, and technologies, '
-                          'facilitating their integration into real-world applications. With state-of-the-art computing infrastructure, '
-                          'including high-performance systems, deep learning servers, and advanced simulation tools, PCIA provides a '
-                          'robust environment for cutting-edge research.\n\n'
-                          'PCIA is structured into seven key research departments: AI Software, Hardware, Microelectronics, Intelligent Systems, '
-                          'Cybersecurity & Space Applications, Smart Cities, and Medical Diagnostics. Each department is equipped with specialized '
-                          'labs that drive innovation in their respective fields. Through interdisciplinary collaboration, industry partnerships, '
-                          'and academic excellence, PCIA plays a crucial role in shaping the future of AI technology and its societal impact.',
-                          style: TextStyle(fontSize: 16, color: Colors.black),
-                        ),  
+                        // Load text content from assets/about_text.txt
+                        FutureBuilder<String>(
+                          future: DefaultAssetBundle.of(context)
+                              .loadString('assets/texts/about_text.txt'),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            } else if (snapshot.hasError) {
+                              return Text(
+                                'Error loading content: ${snapshot.error}',
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.black),
+                              );
+                            } else {
+                              return Text(
+                                snapshot.data ?? '',
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.black),
+                              );
+                            }
+                          },
+                        ),
                         const SizedBox(height: 16),
                       ],
                     ),
@@ -117,4 +123,3 @@ class AboutPage extends StatelessWidget {
     );
   }
 }
-
