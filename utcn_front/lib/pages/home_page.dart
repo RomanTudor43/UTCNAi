@@ -11,21 +11,17 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 1) HERO SECTION
             SizedBox(
               height: 400,
               child: Stack(
                 children: [
-                  // Background Image
                   Positioned.fill(
                     child: Image.asset(
                       'assets/images/pcia.png',
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Container(
-                    color: const Color.fromARGB(141, 1, 1, 1),
-                  ),
+                  Container(color: const Color.fromARGB(141, 1, 1, 1)),
                   Align(
                     alignment: Alignment.center,
                     child: Padding(
@@ -48,10 +44,7 @@ class HomePage extends StatelessWidget {
                             'a research institute in the interdisciplinary area between mathematics, '
                             'linguistics, music, computer science, philosophy, and artificial intelligence.',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                            ),
+                            style: TextStyle(fontSize: 18, color: Colors.white),
                           ),
                         ],
                       ),
@@ -120,11 +113,9 @@ class HomePage extends StatelessWidget {
       height: 270,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        // Optional: Try adding BouncingScrollPhysics for a smoother scroll:
-        // physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 75),
         itemCount: items.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 66 ),
+        separatorBuilder: (_, __) => const SizedBox(width: 66),
         itemBuilder: (context, index) {
           final item = items[index];
           return _buildNewsCard(context, item);
@@ -133,11 +124,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  /// Builds an individual "news" card, with only "Read more" clickable
   Widget _buildNewsCard(BuildContext context, _NewsItemData item) {
     return SizedBox(
       width: 300,
-      // Column of image + texts
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -156,20 +146,11 @@ class HomePage extends StatelessWidget {
           // Title
           Text(
             item.title,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
-          // Subtitle
-          Text(
-            item.subtitle,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
+          Text(item.subtitle, maxLines: 2, overflow: TextOverflow.ellipsis),
           const SizedBox(height: 8),
-          // Only "Read more →" is clickable
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, item.routeName),
             child: Text(
@@ -185,7 +166,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  /// Builds a 2×2 grid of cards
   Widget _buildGridOfCards(BuildContext context) {
     final gridItems = [
       _GridItemData(
@@ -204,7 +184,7 @@ class HomePage extends StatelessWidget {
         imagePath: 'assets/images/home6.jpg',
       ),
       _GridItemData(
-        title: 'ILLC People in the Media',
+        title: 'PCAI People in the Media',
         routeName: '/peopleInMedia',
         imagePath: 'assets/images/home5.jpg',
       ),
@@ -217,82 +197,81 @@ class HomePage extends StatelessWidget {
       childAspectRatio: 3.0,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      children: gridItems.map((item) {
-        return GestureDetector(
-          onTap: () => Navigator.pushNamed(context, item.routeName),
-          child: Stack(
-            children: [
-              // Background Image
-              Positioned.fill(
-                child: Image.asset(
-                  item.imagePath,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              // For text visibility, add an optional gradient or shadow
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                height: 70,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.transparent, Color.fromARGB(101, 1, 1, 1)],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+      children:
+          gridItems.map((item) {
+            return GestureDetector(
+              onTap: () => Navigator.pushNamed(context, item.routeName),
+              child: Stack(
+                children: [
+                  // Background Image
+                  Positioned.fill(
+                    child: Image.asset(item.imagePath, fit: BoxFit.cover),
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    height: 70,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.transparent,
+                            Color.fromARGB(101, 1, 1, 1),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                bottom: 16,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item.title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        shadows: [
-                          Shadow(
-                            offset: Offset(0, 1),
-                            blurRadius: 3,
-                            color: Colors.black54,
+                  Positioned(
+                    left: 16,
+                    bottom: 16,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.title,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                offset: Offset(0, 1),
+                                blurRadius: 3,
+                                color: Colors.black54,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Read more →',
-                      style: TextStyle(
-                        color: Colors.red[300],
-                        fontWeight: FontWeight.bold,
-                        shadows: const [
-                          Shadow(
-                            offset: Offset(0, 1),
-                            blurRadius: 3,
-                            color: Colors.black54,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Read more →',
+                          style: TextStyle(
+                            color: Colors.red[300],
+                            fontWeight: FontWeight.bold,
+                            shadows: const [
+                              Shadow(
+                                offset: Offset(0, 1),
+                                blurRadius: 3,
+                                color: Colors.black54,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        );
-      }).toList(),
+            );
+          }).toList(),
     );
   }
 }
 
-/// Data model for the scrollable "news" items
 class _NewsItemData {
   final String title;
   final String subtitle;
@@ -307,7 +286,6 @@ class _NewsItemData {
   });
 }
 
-/// Data model for the grid items
 class _GridItemData {
   final String title;
   final String routeName;
