@@ -12,7 +12,7 @@ class AboutPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 400, // Smaller height so you see more of the image
+              height: 400,
               child: Stack(
                 children: [
                   Positioned.fill(
@@ -22,9 +22,8 @@ class AboutPage extends StatelessWidget {
                     ),
                   ),
                   Positioned.fill(child: Container(color: Colors.black54)),
-                  // Title near the bottom
                   Positioned(
-                    bottom: 20, // 20px from the bottom edge
+                    bottom: 20,
                     left: 0,
                     right: 0,
                     child: Text(
@@ -40,7 +39,7 @@ class AboutPage extends StatelessWidget {
                 ],
               ),
             ),
-            // 2) MAIN CONTENT (Two-Column Layout)
+
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
@@ -70,24 +69,30 @@ class AboutPage extends StatelessWidget {
                       children: [
                         // Load text content from assets/about_text.txt
                         FutureBuilder<String>(
-                          future: DefaultAssetBundle.of(context)
-                              .loadString('assets/texts/about_text.txt'),
+                          future: DefaultAssetBundle.of(
+                            context,
+                          ).loadString('assets/texts/about_text.txt'),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
                               return const Center(
-                                  child: CircularProgressIndicator());
+                                child: CircularProgressIndicator(),
+                              );
                             } else if (snapshot.hasError) {
                               return Text(
                                 'Error loading content: ${snapshot.error}',
                                 style: const TextStyle(
-                                    fontSize: 16, color: Colors.black),
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
                               );
                             } else {
                               return Text(
                                 snapshot.data ?? '',
                                 style: const TextStyle(
-                                    fontSize: 16, color: Colors.black),
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
                               );
                             }
                           },
@@ -115,7 +120,7 @@ class AboutPage extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 16,
-            color: Colors.blue[900],
+            color: const Color.fromARGB(255, 8, 15, 27),
             decoration: TextDecoration.underline,
           ),
         ),
