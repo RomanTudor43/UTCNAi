@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,22 +14,21 @@ class TopBar extends StatelessWidget {
         children: [
           // Logo image
           Image.asset(
-            'assets/images/utcn-logo.png',  
-            height: 50, // Adjust the height as needed
+            'assets/images/utcn-logo.png',
+            height: 50, 
           ),
-          const SizedBox(width: 10), // Spacing between the logo and text
-          // Title text wrapped in MouseRegion and GestureDetector for navigation
+          const SizedBox(width: 10), 
           MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
               onTap: () {
-                // Navigate to the home page; adjust the route name as needed.
+
                 Navigator.pushNamed(context, '/');
               },
               child: const Text(
                 'Institutul de Cercetare pentru Inteligenta Artificiala',
                 style: TextStyle(
-                  color: Colors.black, 
+                  color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   fontFamily: "PlayfairDisplay",
