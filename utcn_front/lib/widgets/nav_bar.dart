@@ -55,9 +55,8 @@ class NavBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 100),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        children: navItems
-            .map((navItem) => _HoverNavItem(navItem: navItem))
-            .toList(),
+        children:
+            navItems.map((navItem) => _HoverNavItem(navItem: navItem)).toList(),
       ),
     );
   }
@@ -108,15 +107,14 @@ class _HoverSubItemState extends State<_HoverSubItem> {
           widget.onTap();
         },
         child: Container(
-          color: isHovered
-              ? const Color.fromARGB(255, 141, 140, 140) // Gray on hover
-              : (isSelected ? Colors.grey[300] : Colors.transparent),
+          color:
+              isHovered
+                  ? const Color.fromARGB(255, 141, 140, 140) // Gray on hover
+                  : (isSelected ? Colors.grey[300] : Colors.transparent),
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
           child: Text(
             widget.label,
-            style: TextStyle(
-              color: isHovered ? Colors.white : Colors.black,
-            ),
+            style: TextStyle(color: isHovered ? Colors.white : Colors.black),
           ),
         ),
       ),
@@ -165,9 +163,10 @@ class _HoverNavItemState extends State<_HoverNavItem> {
           child: Container(
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            color: _isAnyHover
-                ? const Color.fromARGB(255, 141, 36, 36)
-                : Colors.transparent,
+            color:
+                _isAnyHover
+                    ? const Color.fromARGB(255, 141, 36, 36)
+                    : Colors.transparent,
             child: Text(
               widget.navItem.label,
               style: TextStyle(
@@ -226,15 +225,16 @@ class _HoverNavItemState extends State<_HoverNavItem> {
                 elevation: 4,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: widget.navItem.subItems.map((sub) {
-                    return _HoverSubItem(
-                      label: sub.label,
-                      onTap: () {
-                        Navigator.pushNamed(context, sub.routeName);
-                        _removeDropdown();
-                      },
-                    );
-                  }).toList(),
+                  children:
+                      widget.navItem.subItems.map((sub) {
+                        return _HoverSubItem(
+                          label: sub.label,
+                          onTap: () {
+                            Navigator.pushNamed(context, sub.routeName);
+                            _removeDropdown();
+                          },
+                        );
+                      }).toList(),
                 ),
               ),
             ),
