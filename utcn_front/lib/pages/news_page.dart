@@ -19,7 +19,7 @@ class NewsPage extends StatelessWidget {
         title: 'New PhD Position in Algorithmic Game Theory',
         date: 'Monday, March 20',
         excerpt:
-            'A PhD position is available in the Theoretical Computer Science Group at the ILLC.  \n'
+              'A PhD position is available in the Theoretical Computer Science Group at the PCIA.  \n'
             'The successful candidate will work on cutting-edge research in algorithmic game theory, '
             'with a focus on mechanism design and online learning. \n'
             'The position offers a stimulating research environment and opportunities for collaboration '
@@ -31,7 +31,7 @@ class NewsPage extends StatelessWidget {
         title: 'Research Collaboration Announcement',
         date: 'Friday, March 17',
         excerpt:
-            'ILLC is proud to announce a new research collaboration with the University of Amsterdam '
+            'PCIA is proud to announce a new research collaboration with the University of Amsterdam '
             'on the topic of "Logic and Artificial Intelligence for Social Good." \n'
             'This collaboration will bring together researchers from both institutions to work on projects '
             'that address important societal challenges, such as fairness, transparency, and accountability in AI systems. \n'
@@ -67,7 +67,6 @@ class NewsPage extends StatelessWidget {
             'Join Dr Kim Baraka and Dr Rosa Wevers for a talk on the creative cultures of AI. \n'
             'This talk will explore the ways in which AI is being used to generate creative content, such as music, art, and literature. \n'
             'The speakers will also discuss the implications of this for our understanding of creativity and authorship. \n'
-            'Location: Room L3.36, ILLC Lab42, Science Park 900, Amsterdam. \n'
             'For more information, see here or at https://aiculturesociety.github.io/ or contact Gabriel Pereira at g.pereira at uva.nl.',
       ),
     ];
@@ -200,9 +199,9 @@ class NewsPage extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                _topLink('ILLC Events this week', () {}),
+                                _topLink('PCAI Events this week', () {}),
                                 const SizedBox(height: 8),
-                                _topLink('ILLC News', () {}),
+                                _topLink('PCAI News', () {}),
                                 const SizedBox(height: 8),
                                 _topLink('Master of Logic Defenses', () {}),
                               ],
